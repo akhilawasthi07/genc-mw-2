@@ -1,0 +1,27 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans     
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	
+	
+	<bean name="megaE" class="com.cts.basic.model.Engine">
+		<property name="hp" value="5" />
+	</bean>
+	<bean name="megaE2" class="com.cts.basic.model.Engine">
+		<property name="hp" value="10" />
+	</bean>
+	
+	<bean name="bmw" class="com.cts.basic.model.Car">
+		<property name="e" ref="megaE" />
+		<property name="year" value="2018" />
+		<property name="brand" value="BMW" />
+	</bean>
+	<bean name="bmw2" class="com.cts.basic.model.Car">
+		<constructor-arg ref="megaE2" />
+		<property name="year" value="2019" />
+		<property name="brand" value="BMW" />
+	</bean>
+	
+	
+</beans>
