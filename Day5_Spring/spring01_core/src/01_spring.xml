@@ -1,0 +1,16 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans     
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	
+	
+	<bean id="kirti" class="com.cts.basic.model.Student">
+	</bean>
+	<bean id="anuj" class="com.cts.basic.model.Student">
+		<property name="name" value="Anuj"/>
+		<property name="address" value="India"/>
+		<property name="age" value="25"/>
+	</bean>
+	
+</beans>
