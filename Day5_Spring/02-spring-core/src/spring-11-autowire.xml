@@ -3,7 +3,9 @@
 xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance"
 xsi:schemaLocation= "http://www.springframework.org/schema/beans
 http://www.springframework.org/schema/beans/spring-beans.xsd" >
+
 <import resource="spring-11-convertDate.xml"/>
+
 	<bean id="dateFormat" class="java.text.SimpleDateFormat">
 		<constructor-arg value="dd-MM-yyyy" />
 	</bean>
@@ -31,7 +33,7 @@ http://www.springframework.org/schema/beans/spring-beans.xsd" >
 		<property name="dob" value="28-05-1989" />
 	</bean>
 	
-	<bean id="librarian" class ="com.dto.Person">
+	<bean id="librarian2" class ="com.dto.Person">
 		<property name="name" value="Miley" />
 		<property name="dob" value="31-07-1986" />
 	</bean>

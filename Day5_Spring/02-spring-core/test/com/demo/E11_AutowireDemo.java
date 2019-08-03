@@ -13,7 +13,7 @@ public class E11_AutowireDemo {
 		Library library = context.getBean("library3", Library.class);
 		System.out.println(library);
 		
-		Book book = context.getBean(Book.class);
+//		Book book = context.getBean(Book.class);
 //		System.out.println(book);
 		
 		
