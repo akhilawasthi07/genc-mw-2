@@ -1,13 +1,17 @@
 package com.cts.controllers;
 
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.cts.model.User;
 
 @Controller
 @RequestMapping("user")
@@ -15,7 +19,7 @@ public class UserController {
 	
 	@RequestMapping("fetch")
 	public ModelAndView getData() {
-		ModelAndView mv = new ModelAndView("users");
+		ModelAndView mv = new ModelAndView("user/users");
 		System.out.println("finding all users");
 		return mv;
 	}
@@ -23,24 +27,49 @@ public class UserController {
 //	@RequestMapping(value="login", method=RequestMethod.GET)
 	@GetMapping("login")
 	public String getLoginPage() {
-		return "login";
+		return "user/login";
 	}
 	
 //	@RequestMapping(value="login", method=RequestMethod.POST)
 	@PostMapping("login")
-	public ModelAndView getLogin(@RequestParam("emailId") String email, @RequestParam String password) {
+//	public ModelAndView getLogin(@RequestParam("emailId") String email, @RequestParam String password) {
+		public ModelAndView getLogin(@ModelAttribute User user) {
 		ModelAndView mav = null;
+		String email = user.getEmail();
+		String password = user.getPassword();
 		System.out.println(email);
 		System.out.println(password);
 		if(email.equals("admin@gmail.com") && password.equals("890")) {
 			System.out.println("valid user");
-			mav = new ModelAndView("welcome");
+			mav = new ModelAndView("user/welcome");
 			mav.addObject("data", "Welocome "+email);
 		} else {
 			System.out.println("invalid user");
-			mav = new ModelAndView("login");
+			mav = new ModelAndView("user/login");
 		}
 		return mav;
+	}
+	
+	@GetMapping("register")
+	public String getRegistrationPage() {
+		return "user/register";
+	}
+	
+	@PostMapping("register")
+	public String getRegistration(@ModelAttribute @Valid User user, BindingResult result, Model model) {
+		// @RequestParam String username -> user.setUsername(requestParam->username)
+		
+		System.out.println(user);
+		
+		
+		System.out.println(result.hasErrors());
+		if(result.hasErrors()) {
+			return "user/register";
+		} else {
+			
+		model.addAttribute("user", user);
+		return "user/newuser";
+		}
 	}
 	
 }
