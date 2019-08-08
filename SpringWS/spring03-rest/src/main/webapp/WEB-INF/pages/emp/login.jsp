@@ -41,7 +41,7 @@
 		var password = document.getElementById('password').value;
 		
 		console.log('send login req');
-		fetch('//localhost:8080/spring03-rest/rest/user/login2', { 
+		fetch('//localhost:8080/spring03-rest/rest/user/login', { 
 			  method: 'POST',
 			  body: JSON.stringify({"email": email, "password": password}),
 			  headers:{
