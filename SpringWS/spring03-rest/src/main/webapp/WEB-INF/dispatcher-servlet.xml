@@ -23,5 +23,7 @@ http://www.springframework.org/schema/mvc/spring-mvc.xsd" >
 	<property name="suffix" value=".jsp" />
 </bean>
 
+<tx:annotation-driven />
+
 
 </beans>
