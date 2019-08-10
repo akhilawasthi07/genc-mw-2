@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
+//@Table
 public class Item {
 	@Id
 	private int id;
